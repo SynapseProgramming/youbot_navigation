@@ -1,13 +1,19 @@
-<!-- Launch file to brin up all essentioal nodes for navigation with obstagle avoidance.
-This scrip doe not start any SLAM algorithm.
--->
+
 
 <launch>
 
-        <include file="$(find youbot_oodl)/launch/youbot_oodl_driver.launch" />
-        <include file="$(find youbot_oodl)/launch/youbot_joint_state_publisher.launch" />
-        <include file="$(find youbot_navigation_common)/launch/base_front_hokuyo_node.launch" />
-        <include file="$(find youbot_navigation_local)/launch/move_base_local.launch" />
+  <!-- Run the map server -->
+  <arg name="map_file" default="$(find youbot_navigation_global)/map/youbot_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+
+  <!--- Run AMCL -->
+  <include file="$(find youbot_navigation_global)/launch/amcl.launch" />
+
+<!--continue working on the bringup navigation launch folders -->
+<!--- Run Move Base -->
+  <include file="$(find youbot_navigation_global)/launch/move_base_global.launch" />
+
+      <!--  <include file="$(find youbot_navigation_local)/launch/move_base_local.launch" />-->
 
 </launch>
-
