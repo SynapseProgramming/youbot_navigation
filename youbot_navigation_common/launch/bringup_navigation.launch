@@ -10,9 +10,10 @@
   <!--- Run AMCL -->
   <include file="$(find youbot_navigation_global)/launch/amcl.launch" />
 
+
 <!--continue working on the bringup navigation launch folders -->
 <!--- Run Move Base -->
-  <include file="$(find youbot_navigation_global)/launch/move_base_global.launch" />
+<include file="$(find youbot_navigation_global)/launch/move_base_global.launch" />
 
       <!--  <include file="$(find youbot_navigation_local)/launch/move_base_local.launch" />-->
 
