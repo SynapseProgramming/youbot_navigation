@@ -1,5 +1,5 @@
-#include "ros/ros.h"
-#include "geometry_msgs/Twist.h"
+#include <ros/ros.h>
+#include <geometry_msgs/Twist.h>
 
 double T = 0.3; //sec
 double dt = 0.1; //ms
@@ -14,7 +14,7 @@ ros::Publisher twistPublisher;
 double lowPassFilter(double x, double y0, double dt, double T)          // Taken from http://en.wikipedia.org/wiki/Low-pass_filter
 {
    double res = y0 + (x - y0) * (dt/(dt+T));
-   
+
    if ((res*res) <= epsilon)
 	res = 0;
    return res;
@@ -67,4 +67,3 @@ int main(int argc, char **argv)
 
   return 0;
 }
-
